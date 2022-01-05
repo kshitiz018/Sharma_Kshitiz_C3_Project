@@ -4,9 +4,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Arrays;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
 class RestaurantTest {
@@ -62,9 +66,15 @@ class RestaurantTest {
     }
     @Test
     public void removing_item_that_does_not_exist_should_throw_exception() {
-
         assertThrows(itemNotFoundException.class,
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void total_order_cost_should_be_388_when_SweetCornSoup_and_Vegetable_lasagne_are_ordered(){
+        List<String> selectedItems = Arrays.asList("Sweet corn soup","Vegetable lasagne");
+        int orderCost = restaurant.getOrderValue(SelectedItems);
+        assertThat(totalCost, equalTo(388));
+
+    }
 }

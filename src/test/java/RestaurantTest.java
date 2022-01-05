@@ -8,6 +8,7 @@ import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -73,7 +74,7 @@ class RestaurantTest {
     @Test
     public void total_order_cost_should_be_388_when_SweetCornSoup_and_Vegetable_lasagne_are_ordered(){
         List<String> selectedItems = Arrays.asList("Sweet corn soup","Vegetable lasagne");
-        int orderCost = restaurant.getOrderValue(SelectedItems);
+        int totalCost = restaurant.getOrderValue(selectedItems);
         assertThat(totalCost, equalTo(388));
 
     }
